@@ -6,8 +6,8 @@ const model = require('./model');
 const jwt = require('jsonwebtoken');
 const middleware = require('./middleware')
 const bcrypt = require('bcrpyt')
-const PORT = 8000
-const dotenv = require('dotenv')
+const port = process.env.PORT || 8000
+
 
 
 
@@ -16,7 +16,6 @@ const dotenv = require('dotenv')
 app.use(express.json());
 
 app.use(cors({ origin: "*" }));
-dotenv.config();
 mongoose.connect("mongodb+srv://Gtvsairam:password2626@cluster0.pl5lqxf.mongodb.net/Registration_users").then(
     () => console.log('DB Connection established')
 )
@@ -101,6 +100,6 @@ app.get('/Home', (req, res) => {
     res.send('hello homeeeeeeee')
 })
 
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log("serever started.......");
 });
