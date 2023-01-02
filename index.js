@@ -5,7 +5,7 @@ const cors = require('cors');
 const model = require('./model');
 const jwt = require('jsonwebtoken');
 const middleware = require('./middleware')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrpyt')
 const PORT = 8000
 const dotenv = require('dotenv')
 

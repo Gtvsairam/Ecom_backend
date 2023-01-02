@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "client": "npm start --prefix clent",
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
+    "start": "node index.js"
   },
   "author": "gtvsairam",
   "license": "ISC",
