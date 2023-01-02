@@ -5,7 +5,7 @@ const cors = require('cors');
 const model = require('./model');
 const jwt = require('jsonwebtoken');
 const middleware = require('./middleware')
-const bcrypt = require('bcrpyt')
+// const bcrypt = require('bcrpyt')
 const port = process.env.PORT || 8000
 
 
@@ -29,7 +29,7 @@ mongoose.connect("mongodb+srv://Gtvsairam:password2626@cluster0.pl5lqxf.mongodb.
 app.post('/register', async (req, res) => {
     try {
         const { username, email, password,} = req.body;
-        const encry_password = await bcrypt.hash(password, 10);
+        // const encry_password = await bcrypt.hash(password, 10);
         let exist = await model.findOne({ email })
         if (exist) {
             return res.status(400).send('User Already Exist')
@@ -37,7 +37,7 @@ app.post('/register', async (req, res) => {
         let newUser = new model({
             username,
             email,
-            password:encry_password
+            password
         })
         await newUser.save();
         res.status(200).send('Registered Successfully')
@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
         if (!existuser) {
             return res.status(400).send('user not found');
         }
-        if (await bcrypt.compare(password,existuser.password)) {
+        if (await compare(password,existuser.password)) {
             return res.status(200).send('login succesfully');
         }
         else{
