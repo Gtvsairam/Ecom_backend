@@ -16,7 +16,7 @@ const port = process.env.PORT || 8000
 app.use(express.json());
 
 app.use(cors({ origin: "*" }));
-mongoose.connect("mongodb+srv://Gtvsairam:password2626@cluster0.pl5lqxf.mongodb.net/Registration_users").then(
+mongoose.connect("mongodb+srv://gtvsairam26:3SpE3PcR2sVBbQ16@cluster0.qq5ytaw.mongodb.net/E-COMMERCE").then(
     () => console.log('DB Connection established')
 )
  
@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
         if (!existuser) {
             return res.status(400).send('user not found');
         }
-        if (await compare(password,existuser.password)) {
+        if ((password,existuser.password)) {
             return res.status(200).send('login succesfully');
         }
         else{
@@ -74,7 +74,7 @@ app.post('/login', async (req, res) => {
                 return res.json({token})
             })
     } catch (error) {
-        console.log(err)
+        console.log(error)
         return res.status(500).send('Internel Server Error')
     }
 })
