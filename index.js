@@ -6,16 +6,26 @@ const model = require('./model');
 const jwt = require('jsonwebtoken');
 const middleware = require('./middleware')
 const bcrypt = require('bcrypt')
+const PORT = 8000
+const dotenv = require('dotenv')
 
 
 
-mongoose.connect("mongodb+srv://gtvsairam26:3SpE3PcR2sVBbQ16@cluster0.qq5ytaw.mongodb.net/E-COMMERCE").then(
-    () => console.log('DB Connection established')
-)
+
 
 app.use(express.json());
 
 app.use(cors({ origin: "*" }));
+dotenv.config();
+// mongoose.connect("mongodb+srv://Gtvsairam:password2626@cluster0.pl5lqxf.mongodb.net/Registration_users").then(
+//     () => console.log('DB Connection established')
+// )
+ 
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+
+}).then(()=>console.log('connecteddd.....'));
 //////// Registration schema////////
 app.post('/register', async (req, res) => {
     try {
@@ -91,6 +101,6 @@ app.get('/Home', (req, res) => {
     res.send('hello homeeeeeeee')
 })
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log("serever started.......");
 });
