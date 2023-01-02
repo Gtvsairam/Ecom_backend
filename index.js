@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 
-}).then(()=>console.log('connecteddd.....'));
+}).then(()=>console.log('connecteddd......'));
 //////// Registration schema////////
 app.post('/register', async (req, res) => {
     try {
